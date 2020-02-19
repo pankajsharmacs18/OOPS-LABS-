@@ -1,0 +1,96 @@
+package studentIdGenrate;
+
+import java.util.Scanner;
+
+interface StudentDetaile{
+    void mail(String name,String year,String course);
+    void passWord();
+    void netId(String name,int year);
+}
+public class StudentDetails implements StudentDetaile{
+    private  String name;
+    private int  yearOfJoining;
+    private String course;
+    public int getYearOfJoining() {
+        return yearOfJoining;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+public String getName() {
+    return name;
+}
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setYearOfJoining(int yearOfJoining) {
+        this.yearOfJoining = yearOfJoining;
+    } @Override
+    public void mail(String name, String year,String course) {
+        int i=0;
+        while (name.charAt(i)!=' '){
+            i++;
+        }
+        String extension;
+        switch (course)
+        {
+            case "Computer Science":
+                extension="CS";
+                break;
+            case "Machanical Engineering":
+                extension ="ME";
+                break;
+            case "Civil Enginnering":
+                extension ="CVL";
+                break;
+            case "Electronic Enginering ":
+                extension="EN";
+                break;
+            case "Electronic Engineering ":
+                extension ="EC";
+                break;
+            default:
+                extension="pa";
+        }
+        System.out.print("MAIL IS : "+name.substring(0,i)+"."+name.substring(i+1,name.length())+"_"+extension+year.substring(2,year.length())+"@gla.ac.in");
+    }
+
+    @Override
+    public void passWord() {
+        long min=100;
+        long max=999;
+        double psswordFirst =(Math.random()*((max-min)+1))+min;
+        double passLast= (Math.random()*((max-min)+1))+min;
+        System.out.println("Pass is : "+psswordFirst);
+
+    }
+
+    @Override
+    public void netId(String name, int year) {
+
+    }
+    public static void main(String... PankajSharma){
+        Scanner input =new Scanner(System.in);
+        StudentDetails obj = new StudentDetails();
+        System.out.print("Emter name");
+        String name =input.nextLine();
+        System.out.print("Enter course name ");
+        String course =input.nextLine();
+        System.out.println("enter year of joining : ");
+        String year =input.next();
+        obj.mail(name,year,year);
+        obj.passWord();
+        obj.setName(name);
+        obj.getName();
+
+    }
+
+
+}
